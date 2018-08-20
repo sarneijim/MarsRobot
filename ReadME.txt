@@ -45,16 +45,10 @@ First of all, let's describe some constraints:
 
 
 ---------- USAGE ----------
----- Deployment ----
-Here you can see some instructions on how to deploy the website.
-
-browserify util.js > bundle.js
-
-ASDOKASODKOASKDOSAFJ
-qwdKQWODKOWOQWODKQWODK
-qwodkQWODKWKDOQWDKOQWDKQOW
 
 ---- Website ----
+Open file: index.html
+
 Let's describe the website. Three text inputs can be found at index.html:
 
   - Plateau extension: this is the plateau size. Two integers must be entered separated
@@ -73,15 +67,31 @@ Let's describe the website. Three text inputs can be found at index.html:
   - Textbox below "Movement": it will display the final position and orientation of the rover. The button "+" can be
   used to add the final position to a list with the other rovers' final position.
 
-Clicking the "+" button for the first time, it will lock the plateau size.
+Clicking the "+" button for the first time will lock the plateau size if there are no errors.
 When clicking the "Movement" button, if "Initial position" is not valid, the textbox will turn red. If "Routes" is not valid,
 it will turn red the same way. If there is a robot already in that position, the textbox with the final position and orientation
 will turn red.
 
 ---- Test environment ----
 The test framework used is Mocha, along with the assertion library Chai.
+Node is required: 
+npm install
 
+To run the test: 
 npm test
+
+
+---- Modifications in javascript files ----
+
+To run the Mocha test without any structural change in the project, Browserify has been used.
+Browserify provide the posibility to use require (require is needed for the test)
+Browserify blundles up the javascript files in a unique javascript, "bundle.js".
+
+To install browserify: 
+npm install -g browserify
+
+If any js file is modified, it is necessary to run the following command in the terminal from the folder "script":
+browserify util.js > bundle.js
 
 
 ---------- CONTACT ----------
