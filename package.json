@@ -1,0 +1,17 @@
+{
+  "name": "mars-robot",
+  "version": "0.0.1",
+  "description": "Mars robot with Mocha.",
+  "scripts": {
+    "test": "mocha --compilers js:babel/register",
+    "coverage": "istanbul cover _mocha -- --compilers js:babel/register",
+    "coverage-es6": "babel-node ./node_modules/.bin/isparta cover _mocha"
+  },
+  "devDependencies": {
+    "babel": "^5.8.19",
+    "chai": "^3.2.0",
+    "isparta": "^3.0.4",
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5"
+  }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mars Robot</title>
+  <link rel="stylesheet" type="text/css" href="style\style.css">
+</head>
+<body>
+  <div class="intro">
+    <img src="images/wall-e.jpg" alt="wall-e">
+  </div>
+  <form id="form" action="#">
+    <span>Plateau extension</span><br>
+    <input type="text" name="plateau" id="plateau" placeholder="0 0 ">
+    <br>
+    <span>Initial Point</span><br>
+    <input type="text" name="origin" id="origin" placeholder="0 0 N">
+    <br>
+    <span>Routes</span><br>
+    <input type="text" name="route" id="route" placeholder="MMLMMRRMLM">
+    <br>
+    <input type="button" value="Movement" id="movement"/>
+  </form>
+  <div class = "destination">
+    <div>
+      <span id="final"></span>
+      <button id="add">+</button>
+    </div>
+  </div>
+  <div class = "map">
+    <table id="robot-table">
+      <tr>
+        <th>Robot</th>
+        <th>Position</th>
+      </tr>
+    </table>
+    <button id="reset">Reset</button>
+  </div>
+  <script src="script/bundle.js"></script>
+</body>
+</html>
