@@ -1,4 +1,6 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+// Coordinates class
+
 class Coordinates {
   // For limit the values x - limitX and y -limitY will be the same.
   constructor(x, y, limitX, limitY) {
@@ -32,10 +34,15 @@ class Coordinates {
 module.exports = Coordinates;
 
 },{}],2:[function(require,module,exports){
+// Generic function and user graph helpers
+
 module.exports = {
+  // Modulus work in positive and negative numbers.
   modulus: function (elem) {
     return ((elem % 4) + 4) % 4;
   },
+
+  // Border are red when there is a mistake.
   checkedErrors: function (plateau, robot, route) {
     const arrayChecks = [plateau, robot, route];
     const arrayClasses = [plateauPosition, originPosition, routePosition];
@@ -56,6 +63,7 @@ const helper = require('./helper');
 
 const robotAddedList = [];
 
+// Robot class
 class Robot extends Coordinates {
   constructor(x, y, limitX, limitY, direction, route) {
     super(x, y, limitX, limitY);
@@ -212,6 +220,7 @@ plateauPosition = document.getElementById('plateau');
 originPosition = document.getElementById('origin');
 routePosition = document.getElementById('route');
 
+//Interface flow and validates
 
 movementButton.addEventListener('click', () => {
   robot = initRobot();
@@ -229,23 +238,6 @@ movementButton.addEventListener('click', () => {
   }
 });
 
-function checkLimit(){
-  limit = document.getElementById("plateau").value.split(" ");
-  limit[1] = limit.slice(1, limit.length).join();
-  limitObject = new Coordinates(limit[0], limit[1], limit[0], limit[1]);
-  return limitObject.checkCoordinates;
-}
-
-function initRobot(){
-  originRobot = document.getElementById("origin").value.split(" ");
-  route = document.getElementById("route").value;
-  originRobot[2] = originRobot.slice(2, originRobot.length).join();
-  limit = document.getElementById("plateau").value.split(" ");
-  limit[1] = limit.slice(1, limit.length).join();
-  originRobotObject = new Robot(originRobot[0], originRobot[1], limit[0], limit[1], originRobot[2], route);
-  return originRobotObject;
-}
-
 addButton.addEventListener('click', () => {
   addButton.classList.remove("show");
   robotAddedList = robot.add;
@@ -259,5 +251,24 @@ addButton.addEventListener('click', () => {
 resetButton.addEventListener('click', () => {
   window.location.reload(false);
 })
+
+// Convert input in a Object type Coordinates
+function checkLimit(){
+  limit = document.getElementById("plateau").value.split(" ");
+  limit[1] = limit.slice(1, limit.length).join();
+  limitObject = new Coordinates(limit[0], limit[1], limit[0], limit[1]);
+  return limitObject.checkCoordinates;
+}
+
+// Convert inputs in a Object type Robot
+function initRobot(){
+  originRobot = document.getElementById("origin").value.split(" ");
+  route = document.getElementById("route").value;
+  originRobot[2] = originRobot.slice(2, originRobot.length).join();
+  limit = document.getElementById("plateau").value.split(" ");
+  limit[1] = limit.slice(1, limit.length).join();
+  originRobotObject = new Robot(originRobot[0], originRobot[1], limit[0], limit[1], originRobot[2], route);
+  return originRobotObject;
+}
 
 },{"./coordinate.js":1,"./helper":2,"./robot.js":3}]},{},[4]);

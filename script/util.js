@@ -18,6 +18,7 @@ plateauPosition = document.getElementById('plateau');
 originPosition = document.getElementById('origin');
 routePosition = document.getElementById('route');
 
+//Interface flow and validates
 
 movementButton.addEventListener('click', () => {
   robot = initRobot();
@@ -35,23 +36,6 @@ movementButton.addEventListener('click', () => {
   }
 });
 
-function checkLimit(){
-  limit = document.getElementById("plateau").value.split(" ");
-  limit[1] = limit.slice(1, limit.length).join();
-  limitObject = new Coordinates(limit[0], limit[1], limit[0], limit[1]);
-  return limitObject.checkCoordinates;
-}
-
-function initRobot(){
-  originRobot = document.getElementById("origin").value.split(" ");
-  route = document.getElementById("route").value;
-  originRobot[2] = originRobot.slice(2, originRobot.length).join();
-  limit = document.getElementById("plateau").value.split(" ");
-  limit[1] = limit.slice(1, limit.length).join();
-  originRobotObject = new Robot(originRobot[0], originRobot[1], limit[0], limit[1], originRobot[2], route);
-  return originRobotObject;
-}
-
 addButton.addEventListener('click', () => {
   addButton.classList.remove("show");
   robotAddedList = robot.add;
@@ -65,3 +49,22 @@ addButton.addEventListener('click', () => {
 resetButton.addEventListener('click', () => {
   window.location.reload(false);
 })
+
+// Convert input in a Object type Coordinates
+function checkLimit(){
+  limit = document.getElementById("plateau").value.split(" ");
+  limit[1] = limit.slice(1, limit.length).join();
+  limitObject = new Coordinates(limit[0], limit[1], limit[0], limit[1]);
+  return limitObject.checkCoordinates;
+}
+
+// Convert inputs in a Object type Robot
+function initRobot(){
+  originRobot = document.getElementById("origin").value.split(" ");
+  route = document.getElementById("route").value;
+  originRobot[2] = originRobot.slice(2, originRobot.length).join();
+  limit = document.getElementById("plateau").value.split(" ");
+  limit[1] = limit.slice(1, limit.length).join();
+  originRobotObject = new Robot(originRobot[0], originRobot[1], limit[0], limit[1], originRobot[2], route);
+  return originRobotObject;
+}

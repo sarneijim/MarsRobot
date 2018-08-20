@@ -1,3 +1,5 @@
+// Coordinates class
+
 class Coordinates {
   // For limit the values x - limitX and y -limitY will be the same.
   constructor(x, y, limitX, limitY) {

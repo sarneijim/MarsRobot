@@ -3,6 +3,7 @@ const helper = require('./helper');
 
 const robotAddedList = [];
 
+// Robot class
 class Robot extends Coordinates {
   constructor(x, y, limitX, limitY, direction, route) {
     super(x, y, limitX, limitY);
